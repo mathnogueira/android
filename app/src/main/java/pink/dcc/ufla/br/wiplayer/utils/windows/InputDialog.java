@@ -32,6 +32,7 @@ public class InputDialog {
     public AlertDialog build() {
         AlertDialog.Builder builder = new AlertDialog.Builder(activity);
         builder.setView(buildView())
+                .setTitle(title)
                 .setPositiveButton("OK", (dialog, which) -> {
                     EditText inputText = (EditText) ((Dialog) dialog).findViewById(R.id.dialog_input_text);
                     String answer = inputText.getText().toString();
