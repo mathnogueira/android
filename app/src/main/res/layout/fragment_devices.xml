@@ -10,6 +10,7 @@
         android:orientation="vertical">
 
         <TextView
+            android:id="@+id/connected_devices_title"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:text="@string/connected_devices"
@@ -24,6 +25,7 @@
         </ListView>
 
         <TextView
+            android:id="@+id/waiting_devices_title"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:text="@string/waiting_devices"
@@ -33,6 +35,21 @@
 
         <ListView
             android:id="@+id/list_waiting_devices"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+        </ListView>
+
+        <TextView
+            android:id="@+id/unnamed_devices_title"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:text="@string/unnamed_devices"
+            android:textAlignment="center"
+            android:paddingTop="10dp"
+            android:textSize="25dp"/>
+
+        <ListView
+            android:id="@+id/list_unnamed_devices"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
         </ListView>

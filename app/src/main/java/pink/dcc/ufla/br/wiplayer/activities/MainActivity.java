@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.MenuItem;
 
 import pink.dcc.ufla.br.wiplayer.actions.MainActions;
@@ -34,6 +35,7 @@ public class MainActivity extends AppCompatActivity {
         fragmentReplacer.replaceOn(MainActions.NAVIGATE_HOME, new HomeFragment());
         fragmentReplacer.replaceOn(MainActions.NAVIGATE_MUSIC, new MusicsFragment());
         fragmentReplacer.replaceOn(MainActions.NAVIGATE_DEVICES, new DevicesFragment());
+        fragmentReplacer.replaceOn(MainActions.NAVIGATE_GROUPS, new HomeFragment());
 
         fragmentReplacer.defaultFragment(MainActions.NAVIGATE_HOME);
     }
@@ -54,6 +56,9 @@ public class MainActivity extends AppCompatActivity {
                 case R.id.navigation_devices:
                     action = MainActions.NAVIGATE_DEVICES;
                     break;
+                case R.id.navigation_groups:
+                    action = MainActions.NAVIGATE_GROUPS;
+                    break;
             }
 
             fragmentReplacer.dispatch(action);
@@ -61,5 +66,11 @@ public class MainActivity extends AppCompatActivity {
         }
 
     };
+
+    @Override
+    public boolean onContextItemSelected(MenuItem item)
+    {
+        return true;
+    }
 
 }

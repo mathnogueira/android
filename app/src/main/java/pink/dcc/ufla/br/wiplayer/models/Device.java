@@ -4,6 +4,7 @@ public class Device {
 
     private int id;
     private String name;
+    private Group group;
 
     public Device(String name) {
         this.name = name;
@@ -23,6 +24,14 @@ public class Device {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public void setGroup(Group group) {
+        this.group = group;
+    }
+
+    public Group getGroup() {
+        return group;
     }
 
     @Override

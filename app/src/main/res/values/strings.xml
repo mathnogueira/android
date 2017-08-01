@@ -8,4 +8,5 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="connected_devices">Connected Devices</string>
     <string name="waiting_devices">Waiting Devices</string>
+    <string name="unnamed_devices">Unnamed Devices</string>
 </resources>
