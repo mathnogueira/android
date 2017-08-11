@@ -5,11 +5,13 @@ public class Song {
     private String name;
     private String author;
     private int duration;
+    private boolean isPlaying;
 
     public Song(String name, String author, int duration) {
         this.name = name;
         this.author = author;
         this.duration = duration;
+        this.isPlaying = false;
     }
 
     public String getName() {
@@ -34,5 +36,13 @@ public class Song {
 
     public void setDuration(int duration) {
         this.duration = duration;
+    }
+
+    public boolean isPlaying() {
+        return isPlaying;
+    }
+
+    public void setPlaying(boolean playing) {
+        isPlaying = playing;
     }
 }

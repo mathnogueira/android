@@ -42,6 +42,20 @@ public class SongAdapter extends BaseAdapter {
     @Override
     public View getView(int i, View view, ViewGroup viewGroup) {
         Song song = songList.get(i);
+        return song.isPlaying() ? getPlayingSongView(song, viewGroup) : getSongView(song, viewGroup);
+    }
+
+    private View getPlayingSongView(Song song, ViewGroup viewGroup) {
+        View row = inflater.inflate(R.layout.layout_song_playing_list, viewGroup, false);
+        TextView songNameContainer = (TextView) row.findViewById(R.id.song_name);
+        TextView artistNameContainer = (TextView) row.findViewById(R.id.artist_name);
+        songNameContainer.setText(song.getName());
+        artistNameContainer.setText(song.getAuthor());
+
+        return row;
+    }
+
+    private View getSongView(Song song, ViewGroup viewGroup) {
         View row = inflater.inflate(R.layout.layout_song_list, viewGroup, false);
         TextView songNameContainer = (TextView) row.findViewById(R.id.song_name);
         TextView artistNameContainer = (TextView) row.findViewById(R.id.artist_name);

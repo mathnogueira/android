@@ -13,6 +13,7 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnItemClick;
 import pink.dcc.ufla.br.wiplayer.R;
 import pink.dcc.ufla.br.wiplayer.adapters.SongAdapter;
 import pink.dcc.ufla.br.wiplayer.models.Song;
@@ -24,7 +25,9 @@ public class SongsFragment extends Fragment {
     ListView songsListView;
 
     private List<Song> songList;
+    private Song playingSong;
     private SongsPresenter presenter;
+    private SongAdapter adapter;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup containers, Bundle bundle) {
@@ -40,8 +43,18 @@ public class SongsFragment extends Fragment {
         return view;
     }
 
+    @OnItemClick(R.id.list_available_songs)
+    public void selectSong(int position) {
+        if (playingSong != null) {
+            playingSong.setPlaying(false);
+        }
+        playingSong = songList.get(position);
+        playingSong.setPlaying(true);
+        adapter.notifyDataSetChanged();
+    }
+
     private void setupSongList() {
-        SongAdapter adapter = new SongAdapter(getActivity(), songList);
+        adapter = new SongAdapter(getActivity(), songList);
         songsListView.setAdapter(adapter);
     }
 }
