@@ -9,4 +9,7 @@
     <string name="connected_devices">Connected Devices</string>
     <string name="waiting_devices">Waiting Devices</string>
     <string name="unnamed_devices">Unnamed Devices</string>
+
+    <string name="label_ok">OK</string>
+    <string name="label_cancel">CANCEL</string>
 </resources>

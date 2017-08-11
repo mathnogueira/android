@@ -24,8 +24,6 @@ public class SongsFragment extends Fragment {
     @BindView(R.id.list_available_songs)
     ListView songsListView;
 
-    private List<Song> songList;
-    private Song playingSong;
     private SongsPresenter presenter;
     private SongAdapter adapter;
 
@@ -36,7 +34,6 @@ public class SongsFragment extends Fragment {
         presenter = new SongsPresenter();
 
         ButterKnife.bind(this, view);
-        songList = presenter.getSongs();
 
         setupSongList();
 
@@ -45,16 +42,13 @@ public class SongsFragment extends Fragment {
 
     @OnItemClick(R.id.list_available_songs)
     public void selectSong(int position) {
-        if (playingSong != null) {
-            playingSong.setPlaying(false);
-        }
-        playingSong = songList.get(position);
-        playingSong.setPlaying(true);
+        Song song = presenter.getSongs().get(position);
+        presenter.setPlayingSong(song);
         adapter.notifyDataSetChanged();
     }
 
     private void setupSongList() {
-        adapter = new SongAdapter(getActivity(), songList);
+        adapter = new SongAdapter(getActivity(), presenter.getSongs());
         songsListView.setAdapter(adapter);
     }
 }

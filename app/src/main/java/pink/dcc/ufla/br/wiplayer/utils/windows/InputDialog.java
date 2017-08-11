@@ -33,14 +33,14 @@ public class InputDialog {
         AlertDialog.Builder builder = new AlertDialog.Builder(activity);
         builder.setView(buildView())
                 .setTitle(title)
-                .setPositiveButton("OK", (dialog, which) -> {
+                .setPositiveButton(R.string.label_ok, (dialog, which) -> {
                     EditText inputText = (EditText) ((Dialog) dialog).findViewById(R.id.dialog_input_text);
                     String answer = inputText.getText().toString();
                     if (!answer.isEmpty()) {
                         listener.onPositiveAnswer(answer);
                     }
                 })
-                .setNegativeButton("CANCEL", (dialog, which) -> {
+                .setNegativeButton(R.string.label_cancel, (dialog, which) -> {
 
                 });
 
