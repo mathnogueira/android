@@ -9,7 +9,7 @@
     <item
         android:id="@+id/navigation_music"
         android:icon="@drawable/ic_dashboard_black_24dp"
-        android:title="@string/title_musics" />
+        android:title="@string/title_songs" />
 
     <item
         android:id="@+id/navigation_devices"

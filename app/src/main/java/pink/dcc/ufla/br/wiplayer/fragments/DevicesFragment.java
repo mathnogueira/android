@@ -89,7 +89,7 @@ public class DevicesFragment extends Fragment {
 
     @OnItemClick(R.id.list_unnamed_devices)
     public void onClickUnnamedDevice(AdapterView<?> parent, int position) {
-        InputDialog dialog = new InputDialog("Blah", getActivity())
+        InputDialog dialog = new InputDialog("Give a name to the device", getActivity())
                 .setPositiveAnswerListener(answer -> {
                     Device deviceToRename = presenter.getUnnamedDevices().get(position);
                     presenter.renameDevice(deviceToRename, answer);

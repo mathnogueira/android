@@ -40,7 +40,7 @@ public class InputDialog {
                         listener.onPositiveAnswer(answer);
                     }
                 })
-                .setNegativeButton("NO", (dialog, which) -> {
+                .setNegativeButton("CANCEL", (dialog, which) -> {
 
                 });
 
