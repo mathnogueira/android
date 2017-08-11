@@ -13,7 +13,7 @@ public class ServerUtils {
             socket.connect();
 
             return socket;
-        } catch (URISyntaxException e) {    
+        } catch (URISyntaxException e) {
             e.printStackTrace();
             throw new RuntimeException(e.getMessage());
         }

@@ -12,4 +12,5 @@
 
     <string name="label_ok">OK</string>
     <string name="label_cancel">CANCEL</string>
+    <string name="select_device">Select the player</string>
 </resources>
