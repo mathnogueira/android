@@ -57,8 +57,7 @@ public class DevicesFragment extends BaseFragment {
         GroupSelectionDialog dialog = new GroupSelectionDialog(getContext());
 
         dialog.setOnGroupSelectedListener(group -> {
-            device.setGroup(group);
-            group.addDevice(device);
+            presenter.addDeviceToGroup(device, group);
             adapter.notifyDataSetChanged();
         });
 

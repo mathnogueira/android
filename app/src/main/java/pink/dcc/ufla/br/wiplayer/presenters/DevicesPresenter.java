@@ -3,6 +3,7 @@ package pink.dcc.ufla.br.wiplayer.presenters;
 import java.util.List;
 
 import pink.dcc.ufla.br.wiplayer.models.Device;
+import pink.dcc.ufla.br.wiplayer.models.Group;
 import pink.dcc.ufla.br.wiplayer.services.DeviceService;
 
 public class DevicesPresenter {
@@ -22,4 +23,7 @@ public class DevicesPresenter {
         return devices;
     }
 
+    public void addDeviceToGroup(Device device, Group group) {
+        service.addDeviceToGroup(device, group);
+    }
 }

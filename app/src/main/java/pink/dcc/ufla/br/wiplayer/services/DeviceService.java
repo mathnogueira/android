@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import pink.dcc.ufla.br.wiplayer.models.Device;
+import pink.dcc.ufla.br.wiplayer.models.Group;
 
 public class DeviceService extends BaseService {
 
@@ -29,5 +30,10 @@ public class DeviceService extends BaseService {
             instance = new DeviceService();
         }
         return instance;
+    }
+
+    public void addDeviceToGroup(Device device, Group group) {
+        device.setGroup(group);
+        group.addDevice(device);
     }
 }
