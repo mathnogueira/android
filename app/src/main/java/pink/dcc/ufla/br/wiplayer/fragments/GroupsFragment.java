@@ -27,6 +27,7 @@ public class GroupsFragment extends BaseFragment {
 
     private GroupsPresenter presenter;
     private GroupAdapter adapter;
+    private Group selectedGroup;
 
     @BindView(R.id.device_group_list)
     ListView groupsListView;
@@ -62,9 +63,9 @@ public class GroupsFragment extends BaseFragment {
 
     @OnItemClick(R.id.device_group_list)
     public void onGroupSelected(int position) {
-        Group group = presenter.getGroups().get(position);
+        selectedGroup = presenter.getGroups().get(position);
         routeManager.get(NavigationActions.SELECT_SONG_FOR_GROUP)
-                .inject("group", group);
+                .inject("group", selectedGroup);
 
         routeManager.dispatch(NavigationActions.SELECT_SONG_FOR_GROUP);
     }
@@ -74,7 +75,9 @@ public class GroupsFragment extends BaseFragment {
                 .when(NavigationActions.SELECT_SONG_FOR_GROUP)
                 .then(data -> {
                     Song song = (Song) data.retrieve("song");
-                   Log.e("SONG", song.getName());
+                    presenter.playSongOn(song, selectedGroup);
+                    selectedGroup = null;
+                    adapter.notifyDataSetChanged();
                 });
     }
 
