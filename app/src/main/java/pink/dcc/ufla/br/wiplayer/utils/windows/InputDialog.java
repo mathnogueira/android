@@ -3,8 +3,11 @@ package pink.dcc.ufla.br.wiplayer.utils.windows;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.WindowManager;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 
 import pink.dcc.ufla.br.wiplayer.R;
@@ -18,6 +21,12 @@ public class InputDialog {
     private OnPositionAnswerListener listener;
 
     public InputDialog(String title, Activity activity) {
+        this.title = title;
+        this.activity = activity;
+    }
+
+    public InputDialog(int titleResourceId, Activity activity) {
+        String title = activity.getString(titleResourceId);
         this.title = title;
         this.activity = activity;
     }
@@ -48,6 +57,14 @@ public class InputDialog {
     private View buildView() {
         LayoutInflater layoutInflater = activity.getLayoutInflater();
         View view = layoutInflater.inflate(R.layout.dialog_input, null);
+
+        EditText editText = (EditText) view.findViewById(R.id.dialog_input_text);
+        editText.postDelayed(() -> {
+            editText.setFocusableInTouchMode(true);
+            editText.requestFocus();
+            ((InputMethodManager) activity.getSystemService(Context.INPUT_METHOD_SERVICE)).showSoftInput(editText, 0);
+        }, 250);
+
         return view;
     }
 

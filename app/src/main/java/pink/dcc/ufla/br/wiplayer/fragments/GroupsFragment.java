@@ -52,7 +52,7 @@ public class GroupsFragment extends BaseFragment {
 
     @OnClick(R.id.btn_new_group)
     public void addGroup(View view) {
-        InputDialog dialog = new InputDialog("Give a name to the group", getActivity())
+        InputDialog dialog = new InputDialog(R.string.give_name_group, getActivity())
                 .setPositiveAnswerListener(answer -> {
                     presenter.createGroup(answer);
                     adapter.notifyDataSetChanged();

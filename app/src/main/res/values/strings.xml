@@ -17,4 +17,5 @@
     <string name="new_group">New Group</string>
     <string name="idle_message">Idle</string>
     <string name="not_assigned_to_a_group">Not assigned to a group</string>
+    <string name="give_name_group">Name the group</string>
 </resources>
