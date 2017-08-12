@@ -10,7 +10,6 @@ import pink.dcc.ufla.br.wiplayer.services.SongService;
 public class SongsPresenter {
 
     private List<Song> songList;
-    private Song playingSong;
     private SongService songService;
 
     public SongsPresenter() {
@@ -20,16 +19,6 @@ public class SongsPresenter {
 
     public List<Song> getSongs() {
         return songList;
-    }
-
-    public void setPlayingSong(Song song, Group group) {
-        if (playingSong != null) {
-            playingSong.setPlaying(false);
-        }
-        playingSong = song;
-        playingSong.setPlaying(true);
-
-        songService.setPlayingSong(song, group);
     }
 
 }

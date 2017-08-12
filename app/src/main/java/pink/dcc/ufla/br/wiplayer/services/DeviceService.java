@@ -7,25 +7,23 @@ import pink.dcc.ufla.br.wiplayer.models.Device;
 
 public class DeviceService extends BaseService {
 
-    public List<Device> listDevices() {
-        return null;
-    }
+    private List<Device> devices;
 
-    public List<Device> listActiveDevices() {
-        List<Device> activeDevices = new ArrayList<>();
-        activeDevices.add(new Device("Sony Bravia 72\""));
-        activeDevices.add(new Device("Nexus 5"));
-        activeDevices.add(new Device("Moto G4"));
-        activeDevices.add(new Device("Autofalante JBL"));
-        activeDevices.add(new Device("Moto Z"));
-
-        return activeDevices;
+    public List<Device> getDevices() {
+        return devices;
     }
     
     private static DeviceService instance;
-    
-    private DeviceService() {}
-    
+
+    private DeviceService() {
+        devices = new ArrayList<>();
+        devices.add(new Device("Sony Bravia 72\""));
+        devices.add(new Device("Nexus 5"));
+        devices.add(new Device("Moto G4"));
+        devices.add(new Device("Autofalante JBL"));
+        devices.add(new Device("Moto Z"));
+    }
+
     public static DeviceService getInstance() {
         if (instance == null) {
             instance = new DeviceService();
