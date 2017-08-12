@@ -22,8 +22,7 @@ public class MusicPlayerReceiver extends BroadcastReceiver {
         Random random = new Random();
         int randomNumber = random.nextInt(300) + 300;
         Handler handler = new Handler();
-
-        Toast.makeText(context, ""+randomNumber, Toast.LENGTH_SHORT).show();
+        
         handler.postDelayed(() -> {
             MediaPlayer mediaPlayer = MediaPlayer.create(context, R.raw.splash);
             mediaPlayer.start();
