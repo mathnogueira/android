@@ -13,7 +13,7 @@
             android:layout_height="30dp"
             android:gravity="center_horizontal"
             android:textSize="20sp"
-            android:text="@string/select_device"/>
+            android:text="@string/select_group"/>
         
         <View
             android:layout_width="match_parent"

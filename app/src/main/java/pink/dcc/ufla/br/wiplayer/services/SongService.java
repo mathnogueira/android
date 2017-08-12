@@ -6,12 +6,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 import pink.dcc.ufla.br.wiplayer.models.Device;
+import pink.dcc.ufla.br.wiplayer.models.Group;
 import pink.dcc.ufla.br.wiplayer.models.Song;
 
 public class SongService extends BaseService {
 
-    public void setPlayingSong(Song song, Device device) {
-        Log.e("SONG", "Playing " + song.getName() + " on " + device.getName());
+    public void setPlayingSong(Song song, Group group) {
+        Log.e("SONG", "Playing " + song.getName() + " on " + group.getName());
         socket.emit("song", song);
     }
 

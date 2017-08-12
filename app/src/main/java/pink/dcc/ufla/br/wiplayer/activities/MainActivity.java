@@ -8,6 +8,7 @@ import android.view.MenuItem;
 
 import pink.dcc.ufla.br.wiplayer.actions.MainActions;
 import pink.dcc.ufla.br.wiplayer.fragments.DevicesFragment;
+import pink.dcc.ufla.br.wiplayer.fragments.GroupsFragment;
 import pink.dcc.ufla.br.wiplayer.fragments.HomeFragment;
 import pink.dcc.ufla.br.wiplayer.fragments.SongsFragment;
 import pink.dcc.ufla.br.wiplayer.utils.FragmentReplacer;
@@ -34,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
         fragmentReplacer.replaceOn(MainActions.NAVIGATE_HOME, new HomeFragment());
         fragmentReplacer.replaceOn(MainActions.NAVIGATE_MUSIC, new SongsFragment());
         fragmentReplacer.replaceOn(MainActions.NAVIGATE_DEVICES, new DevicesFragment());
-        fragmentReplacer.replaceOn(MainActions.NAVIGATE_GROUPS, new HomeFragment());
+        fragmentReplacer.replaceOn(MainActions.NAVIGATE_GROUPS, new GroupsFragment());
 
         fragmentReplacer.defaultFragment(MainActions.NAVIGATE_HOME);
     }

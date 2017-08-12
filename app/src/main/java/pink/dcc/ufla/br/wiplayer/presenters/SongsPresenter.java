@@ -1,9 +1,9 @@
 package pink.dcc.ufla.br.wiplayer.presenters;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import pink.dcc.ufla.br.wiplayer.models.Device;
+import pink.dcc.ufla.br.wiplayer.models.Group;
 import pink.dcc.ufla.br.wiplayer.models.Song;
 import pink.dcc.ufla.br.wiplayer.services.SongService;
 
@@ -22,14 +22,14 @@ public class SongsPresenter {
         return songList;
     }
 
-    public void setPlayingSong(Song song, Device device) {
+    public void setPlayingSong(Song song, Group group) {
         if (playingSong != null) {
             playingSong.setPlaying(false);
         }
         playingSong = song;
         playingSong.setPlaying(true);
 
-        songService.setPlayingSong(song, device);
+        songService.setPlayingSong(song, group);
     }
 
 }

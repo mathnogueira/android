@@ -1,6 +1,5 @@
 package pink.dcc.ufla.br.wiplayer.fragments;
 
-import android.app.AlertDialog;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;

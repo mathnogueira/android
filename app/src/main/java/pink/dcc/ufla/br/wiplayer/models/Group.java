@@ -7,6 +7,7 @@ public class Group {
 
     private String name;
     private List<Device> devices;
+    private Song currentPlayingSong;
 
     public Group(String groupName) {
         name = groupName;
@@ -19,5 +20,21 @@ public class Group {
 
     public void addDevice(Device device) {
         devices.add(device);
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Song getCurrentPlayingSong() {
+        return currentPlayingSong;
+    }
+
+    public void setCurrentPlayingSong(Song currentPlayingSong) {
+        this.currentPlayingSong = currentPlayingSong;
     }
 }
