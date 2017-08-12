@@ -23,22 +23,11 @@ public class GroupService extends BaseService {
     private GroupService() {
         fakeGroups = new ArrayList<>();
 
-        Song song = new Song("Altar of Sacrifice", "Slayer", 216);
-
         Group group = new Group("Rock");
-        group.setCurrentPlayingSong(song);
-
         Group group2 = new Group("Metal");
-        group2.setCurrentPlayingSong(song);
-
         Group group3 = new Group("Folk");
-        group3.setCurrentPlayingSong(song);
-
         Group group4 = new Group("Sertanejo");
-        group4.setCurrentPlayingSong(song);
-
         Group group5 = new Group("Funk");
-        group5.setCurrentPlayingSong(song);
 
         fakeGroups.add(group);
         fakeGroups.add(group2);
