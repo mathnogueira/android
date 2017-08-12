@@ -2,6 +2,7 @@ package pink.dcc.ufla.br.wiplayer.fragments;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,6 +17,8 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnItemClick;
 import pink.dcc.ufla.br.wiplayer.R;
+import pink.dcc.ufla.br.wiplayer.adapters.DeviceAdapter;
+import pink.dcc.ufla.br.wiplayer.dialogs.GroupSelectionDialog;
 import pink.dcc.ufla.br.wiplayer.models.Device;
 import pink.dcc.ufla.br.wiplayer.models.Group;
 import pink.dcc.ufla.br.wiplayer.presenters.DevicesPresenter;
@@ -23,24 +26,10 @@ import pink.dcc.ufla.br.wiplayer.utils.windows.InputDialog;
 
 public class DevicesFragment extends BaseFragment {
 
-    @BindView(R.id.list_connected_devices)
-    ListView connectedDevicesView;
+    @BindView(R.id.device_list)
+    public ListView deviceListView;
 
-    @BindView(R.id.list_waiting_devices)
-    ListView waitingDevicesView;
-
-    @BindView(R.id.list_unnamed_devices)
-    ListView unnamedDevicesView;
-
-    @BindView(R.id.connected_devices_title)
-    TextView connectedDevicesTitleView;
-
-    @BindView(R.id.waiting_devices_title)
-    TextView waitingDevicesTitleView;
-
-    @BindView(R.id.unnamed_devices_title)
-    TextView unnamedDevicesTitleView;
-
+    private DeviceAdapter adapter;
     private DevicesPresenter presenter;
 
     @Override
@@ -55,66 +44,26 @@ public class DevicesFragment extends BaseFragment {
     }
 
     private void startupFragment() {
-        connectedDevicesView.setLongClickable(true);
-        waitingDevicesView.setLongClickable(true);
-
         presenter = new DevicesPresenter();
         presenter.loadDevices();
-        updateListView();
+        adapter = new DeviceAdapter(getContext(), presenter.getDevices());
+
+        deviceListView.setAdapter(adapter);
     }
 
-    private void updateListView() {
-        // Popula as listas
-        List<Device> connectedDevices = presenter.getConnectedDevices();
-        List<Device> waitingDevices = presenter.getWaitingDevices();
-        List<Device> unnamedDevices = presenter.getUnnamedDevices();
+    @OnItemClick(R.id.device_list)
+    public void onDeviceSelected(int position) {
+        Device device = presenter.getDevices().get(position);
+        GroupSelectionDialog dialog = new GroupSelectionDialog(getContext());
 
-        ArrayAdapter<Device> connectedDevicesAdapter =
-                new ArrayAdapter<>(getContext(), android.R.layout.simple_list_item_1, connectedDevices);
-        ArrayAdapter<Device> waitingDevicesAdapter =
-                new ArrayAdapter<>(getContext(), android.R.layout.simple_list_item_1, waitingDevices);
-        ArrayAdapter<Device> unnamedDevicesAdapter =
-                new ArrayAdapter<>(getContext(), android.R.layout.simple_list_item_1, unnamedDevices);
+        dialog.setOnGroupSelectedListener(group -> {
+            device.setGroup(group);
+            adapter.notifyDataSetChanged();
+        });
 
-        connectedDevicesView.setAdapter(connectedDevicesAdapter);
-        waitingDevicesView.setAdapter(waitingDevicesAdapter);
-        unnamedDevicesView.setAdapter(unnamedDevicesAdapter);
-
-        hideIfNoElements(connectedDevicesTitleView, connectedDevices);
-        hideIfNoElements(waitingDevicesTitleView, waitingDevices);
-        hideIfNoElements(unnamedDevicesTitleView, unnamedDevices);
-
+        dialog.show();
     }
 
-    @OnItemClick(R.id.list_unnamed_devices)
-    public void onClickUnnamedDevice(AdapterView<?> parent, int position) {
-        InputDialog dialog = new InputDialog("Give a name to the device", getActivity())
-                .setPositiveAnswerListener(answer -> {
-                    Device deviceToRename = presenter.getUnnamedDevices().get(position);
-                    presenter.renameDevice(deviceToRename, answer);
 
-                    updateListView();
-                });
-
-        dialog.build().show();
-
-    }
-
-    @OnItemClick(R.id.list_waiting_devices)
-    public void onClickWaitingDevice(AdapterView<?> parent, int position) {
-        Device device = presenter.getWaitingDevices().get(position);
-        Group group = new Group("Sertanejo do porão");
-        presenter.addDeviceToGroup(device, group);
-
-        updateListView();
-    }
-
-    private void hideIfNoElements(View viewToHide, List container) {
-        if (container.size() == 0) {
-            viewToHide.setVisibility(View.GONE);
-        } else {
-            viewToHide.setVisibility(View.VISIBLE);
-        }
-    }
 
 }

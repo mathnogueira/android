@@ -14,7 +14,7 @@ public class SongsPresenter {
     private SongService songService;
 
     public SongsPresenter() {
-        songService = new SongService();
+        songService = SongService.getInstance();
         songList = songService.getSongList();
     }
 

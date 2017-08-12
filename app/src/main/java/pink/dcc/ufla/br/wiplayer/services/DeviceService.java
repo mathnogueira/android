@@ -21,4 +21,15 @@ public class DeviceService extends BaseService {
 
         return activeDevices;
     }
+    
+    private static DeviceService instance;
+    
+    private DeviceService() {}
+    
+    public static DeviceService getInstance() {
+        if (instance == null) {
+            instance = new DeviceService();
+        }
+        return instance;
+    }
 }

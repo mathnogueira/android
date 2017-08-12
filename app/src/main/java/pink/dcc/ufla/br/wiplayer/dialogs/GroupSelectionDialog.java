@@ -26,7 +26,7 @@ public class GroupSelectionDialog extends Dialog {
     public GroupSelectionDialog(@NonNull Context context) {
         super(context);
 
-        service = new GroupService();
+        service = GroupService.getInstance();
         availableGroups = service.listGroups();
 
         groupAdapter = new ArrayAdapter<>(context, android.R.layout.simple_list_item_1, service.listGroups());

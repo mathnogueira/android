@@ -29,4 +29,15 @@ public class SongService extends BaseService {
 
         return songs;
     }
+    
+    private static SongService instance;
+    
+    private SongService() {}
+    
+    public static SongService getInstance() {
+        if (instance == null) {
+            instance = new SongService();
+        }
+        return instance;
+    }
 }

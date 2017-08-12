@@ -19,8 +19,7 @@
                 android:layout_height="40dp"
                 android:gravity="center"
                 android:textSize="20sp"
-                android:text="Groups"
-                />
+                android:text="@string/title_groups" />
 
             <ListView
                 android:id="@+id/device_group_list"

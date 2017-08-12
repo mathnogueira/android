@@ -17,7 +17,8 @@
                 android:id="@+id/song_name"
                 android:layout_width="300dp"
                 android:layout_height="35dp"
-                android:paddingLeft="15dp"
+                android:paddingStart="10dp"
+                android:paddingEnd="10dp"
                 android:paddingTop="7dp"
                 android:textSize="20sp"
                 android:textColor="@color/colorPlayingMusic" />
@@ -26,7 +27,8 @@
                 android:id="@+id/artist_name"
                 android:layout_width="300dp"
                 android:layout_height="27dp"
-                android:paddingLeft="15dp"
+                android:paddingStart="10dp"
+                android:paddingEnd="10dp"
                 android:textColor="@color/colorPlayingMusic" />
 
         </LinearLayout>

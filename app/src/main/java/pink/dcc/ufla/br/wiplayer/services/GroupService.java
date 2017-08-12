@@ -10,7 +10,17 @@ public class GroupService extends BaseService {
 
     private List<Group> fakeGroups;
 
-    public GroupService() {
+    public List<Group> listGroups() {
+        return fakeGroups;
+    }
+
+    public void addGroup(Group group) {
+        fakeGroups.add(group);
+    }
+
+    private static GroupService instance;
+
+    private GroupService() {
         fakeGroups = new ArrayList<>();
 
         Song song = new Song("Altar of Sacrifice", "Slayer", 216);
@@ -37,12 +47,11 @@ public class GroupService extends BaseService {
         fakeGroups.add(group5);
     }
 
-    public List<Group> listGroups() {
-        return fakeGroups;
-    }
-
-    public void addGroup(Group group) {
-        fakeGroups.add(group);
+    public static GroupService getInstance() {
+        if (instance == null) {
+            instance = new GroupService();
+        }
+        return instance;
     }
 
 }

@@ -14,7 +14,7 @@ public class GroupsPresenter {
     private List<Group> groups;
 
     public GroupsPresenter() {
-        service = new GroupService();
+        service = GroupService.getInstance();
     }
 
     public List<Group> getGroups() {

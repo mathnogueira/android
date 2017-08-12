@@ -53,8 +53,6 @@ public class GroupAdapter extends BaseAdapter {
         groupNameTextView.setText(group.getName());
         if (currentSong != null) {
             currentSongTextView.setText(String.format("Playing %s by %s", currentSong.getName(), currentSong.getAuthor()));
-        } else {
-            currentSongTextView.setText(R.string.idle_message);
         }
         numberDevicesTextView.setText(String.format("%d devices", group.getDevices().size()));
 
