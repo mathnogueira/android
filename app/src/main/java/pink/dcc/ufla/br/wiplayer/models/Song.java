@@ -1,6 +1,8 @@
 package pink.dcc.ufla.br.wiplayer.models;
 
-public class Song {
+import java.io.Serializable;
+
+public class Song implements Serializable {
 
     private String name;
     private String author;

@@ -7,10 +7,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.EditText;
 
-import butterknife.BindView;
-import butterknife.ButterKnife;
 import pink.dcc.ufla.br.wiplayer.R;
-import pink.dcc.ufla.br.wiplayer.utils.OnPositionAnswerListener;
+import pink.dcc.ufla.br.wiplayer.utils.callbacks.OnPositionAnswerListener;
 
 public class InputDialog {
 

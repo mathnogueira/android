@@ -15,14 +15,16 @@ import pink.dcc.ufla.br.wiplayer.adapters.SongAdapter;
 import pink.dcc.ufla.br.wiplayer.dialogs.GroupSelectionDialog;
 import pink.dcc.ufla.br.wiplayer.models.Song;
 import pink.dcc.ufla.br.wiplayer.presenters.SongsPresenter;
+import pink.dcc.ufla.br.wiplayer.utils.callbacks.OnSongSelectedListener;
 
-public class SongsFragment extends Fragment {
+public class SongsFragment extends BaseFragment {
 
     @BindView(R.id.list_available_songs)
     ListView songsListView;
 
     private SongsPresenter presenter;
     private SongAdapter adapter;
+    private OnSongSelectedListener listener;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup containers, Bundle bundle) {
@@ -40,12 +42,23 @@ public class SongsFragment extends Fragment {
     @OnItemClick(R.id.list_available_songs)
     public void selectSong(int position) {
         Song song = presenter.getSongs().get(position);
-        GroupSelectionDialog dialog = new GroupSelectionDialog(getContext());
-        dialog.setOnGroupSelectedListener(group -> {
-            presenter.setPlayingSong(song, group);
-            adapter.notifyDataSetChanged();
-        });
-        dialog.show();
+        routeManager.result()
+                .add("song", song);
+
+        if (listener != null) {
+            listener.onSongSelected(song);
+        }
+
+//        GroupSelectionDialog dialog = new GroupSelectionDialog(getContext());
+//        dialog.setOnGroupSelectedListener(group -> {
+//            presenter.setPlayingSong(song, group);
+//            adapter.notifyDataSetChanged();
+//        });
+//        dialog.show();
+    }
+
+    public void setOnSongSelectedListener(OnSongSelectedListener listener) {
+        this.listener = listener;
     }
 
     private void setupSongList() {

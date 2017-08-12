@@ -10,9 +10,17 @@ import pink.dcc.ufla.br.wiplayer.services.GroupService;
 public class GroupsPresenter {
 
     private GroupService service;
+    private List<Group> groups;
 
     public GroupsPresenter() {
         service = new GroupService();
+    }
+
+    public List<Group> getGroups() {
+        if (groups == null) {
+            groups = service.listGroups();
+        }
+        return groups;
     }
 
     public List<Group> listGroups() {

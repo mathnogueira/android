@@ -1,6 +1,5 @@
-package pink.dcc.ufla.br.wiplayer.dialogs;
+package pink.dcc.ufla.br.wiplayer.utils.callbacks;
 
-import pink.dcc.ufla.br.wiplayer.models.Device;
 import pink.dcc.ufla.br.wiplayer.models.Group;
 
 public interface OnGroupSelectedListener {

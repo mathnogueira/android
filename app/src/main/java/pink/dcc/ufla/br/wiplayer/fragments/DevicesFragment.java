@@ -21,7 +21,7 @@ import pink.dcc.ufla.br.wiplayer.models.Group;
 import pink.dcc.ufla.br.wiplayer.presenters.DevicesPresenter;
 import pink.dcc.ufla.br.wiplayer.utils.windows.InputDialog;
 
-public class DevicesFragment extends Fragment {
+public class DevicesFragment extends BaseFragment {
 
     @BindView(R.id.list_connected_devices)
     ListView connectedDevicesView;

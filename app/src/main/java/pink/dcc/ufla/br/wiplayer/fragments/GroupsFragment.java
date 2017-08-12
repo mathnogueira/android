@@ -12,14 +12,18 @@ import android.widget.ListView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import butterknife.OnItemClick;
 import pink.dcc.ufla.br.wiplayer.R;
+import pink.dcc.ufla.br.wiplayer.actions.NavigationActions;
+import pink.dcc.ufla.br.wiplayer.activities.SongSelectionActivity;
 import pink.dcc.ufla.br.wiplayer.adapters.GroupAdapter;
 import pink.dcc.ufla.br.wiplayer.models.Device;
 import pink.dcc.ufla.br.wiplayer.models.Group;
+import pink.dcc.ufla.br.wiplayer.models.Song;
 import pink.dcc.ufla.br.wiplayer.presenters.GroupsPresenter;
 import pink.dcc.ufla.br.wiplayer.utils.windows.InputDialog;
 
-public class GroupsFragment extends Fragment {
+public class GroupsFragment extends BaseFragment {
 
     private GroupsPresenter presenter;
     private GroupAdapter adapter;
@@ -40,6 +44,8 @@ public class GroupsFragment extends Fragment {
         adapter = new GroupAdapter(getContext(), presenter.listGroups());
         groupsListView.setAdapter(adapter);
 
+        setupRouter();
+
         return view;
     }
 
@@ -52,6 +58,24 @@ public class GroupsFragment extends Fragment {
                 });
 
         dialog.build().show();
+    }
+
+    @OnItemClick(R.id.device_group_list)
+    public void onGroupSelected(int position) {
+        Group group = presenter.getGroups().get(position);
+        routeManager.get(NavigationActions.SELECT_SONG_FOR_GROUP)
+                .inject("group", group);
+
+        routeManager.dispatch(NavigationActions.SELECT_SONG_FOR_GROUP);
+    }
+
+    private void setupRouter() {
+        routeManager.navigateTo(SongSelectionActivity.class)
+                .when(NavigationActions.SELECT_SONG_FOR_GROUP)
+                .then(data -> {
+                    Song song = (Song) data.retrieve("song");
+                   Log.e("SONG", song.getName());
+                });
     }
 
 }

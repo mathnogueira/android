@@ -11,9 +11,9 @@ import android.widget.ListView;
 import java.util.List;
 
 import pink.dcc.ufla.br.wiplayer.R;
-import pink.dcc.ufla.br.wiplayer.models.Device;
 import pink.dcc.ufla.br.wiplayer.models.Group;
 import pink.dcc.ufla.br.wiplayer.services.GroupService;
+import pink.dcc.ufla.br.wiplayer.utils.callbacks.OnGroupSelectedListener;
 
 
 public class GroupSelectionDialog extends Dialog {

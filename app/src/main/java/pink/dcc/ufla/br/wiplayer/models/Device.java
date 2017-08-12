@@ -1,6 +1,8 @@
 package pink.dcc.ufla.br.wiplayer.models;
 
-public class Device {
+import java.io.Serializable;
+
+public class Device implements Serializable {
 
     private int id;
     private String name;

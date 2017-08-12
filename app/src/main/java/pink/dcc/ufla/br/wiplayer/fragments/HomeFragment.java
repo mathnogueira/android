@@ -9,7 +9,7 @@ import android.view.ViewGroup;
 import butterknife.ButterKnife;
 import pink.dcc.ufla.br.wiplayer.R;
 
-public class HomeFragment extends Fragment {
+public class HomeFragment extends BaseFragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle bundle) {

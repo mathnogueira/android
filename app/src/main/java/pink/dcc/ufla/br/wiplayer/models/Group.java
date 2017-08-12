@@ -1,9 +1,10 @@
 package pink.dcc.ufla.br.wiplayer.models;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Group {
+public class Group implements Serializable {
 
     private String name;
     private List<Device> devices;
@@ -36,5 +37,10 @@ public class Group {
 
     public void setCurrentPlayingSong(Song currentPlayingSong) {
         this.currentPlayingSong = currentPlayingSong;
+    }
+
+    @Override
+    public String toString() {
+        return name;
     }
 }

@@ -1,4 +1,4 @@
-package pink.dcc.ufla.br.wiplayer.utils;
+package pink.dcc.ufla.br.wiplayer.utils.callbacks;
 
 public interface OnPositionAnswerListener {
 

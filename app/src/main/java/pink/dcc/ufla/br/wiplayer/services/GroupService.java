@@ -12,9 +12,7 @@ public class GroupService extends BaseService {
 
     public GroupService() {
         fakeGroups = new ArrayList<>();
-    }
 
-    public List<Group> listGroups() {
         Song song = new Song("Altar of Sacrifice", "Slayer", 216);
 
         Group group = new Group("Rock");
@@ -37,7 +35,9 @@ public class GroupService extends BaseService {
         fakeGroups.add(group3);
         fakeGroups.add(group4);
         fakeGroups.add(group5);
+    }
 
+    public List<Group> listGroups() {
         return fakeGroups;
     }
 
