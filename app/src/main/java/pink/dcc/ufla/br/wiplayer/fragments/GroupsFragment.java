@@ -1,12 +1,9 @@
 package pink.dcc.ufla.br.wiplayer.fragments;
 
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import butterknife.BindView;
@@ -17,11 +14,10 @@ import pink.dcc.ufla.br.wiplayer.R;
 import pink.dcc.ufla.br.wiplayer.actions.NavigationActions;
 import pink.dcc.ufla.br.wiplayer.activities.SongSelectionActivity;
 import pink.dcc.ufla.br.wiplayer.adapters.GroupAdapter;
-import pink.dcc.ufla.br.wiplayer.models.Device;
 import pink.dcc.ufla.br.wiplayer.models.Group;
 import pink.dcc.ufla.br.wiplayer.models.Song;
 import pink.dcc.ufla.br.wiplayer.presenters.GroupsPresenter;
-import pink.dcc.ufla.br.wiplayer.utils.windows.InputDialog;
+import pink.dcc.ufla.br.wiplayer.dialogs.InputDialog;
 
 public class GroupsFragment extends BaseFragment {
 

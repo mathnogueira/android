@@ -1,6 +1,5 @@
-package pink.dcc.ufla.br.wiplayer.utils.windows;
+package pink.dcc.ufla.br.wiplayer.dialogs;
 
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
@@ -18,6 +17,7 @@ public class InputDialog {
     private final String title;
     private final Context context;
     private OnPositionAnswerListener listener;
+    private String defaultValue;
 
     public InputDialog(String title, Context context) {
         this.title = title;
@@ -32,6 +32,11 @@ public class InputDialog {
 
     public InputDialog setPositiveAnswerListener(OnPositionAnswerListener listener) {
         this.listener = listener;
+        return this;
+    }
+
+    public InputDialog setDefaultValue(String value) {
+        defaultValue = value;
         return this;
     }
 
@@ -62,6 +67,9 @@ public class InputDialog {
             editText.setFocusableInTouchMode(true);
             editText.requestFocus();
             ((InputMethodManager) context.getSystemService(Context.INPUT_METHOD_SERVICE)).showSoftInput(editText, 0);
+            if (defaultValue != null) {
+                editText.setText(defaultValue);
+            }
         }, 250);
 
         return view;

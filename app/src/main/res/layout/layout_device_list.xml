@@ -34,19 +34,6 @@
 
         </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="60dp"
-            android:layout_height="match_parent"
-            android:gravity="center|end">
-
-            <ImageButton
-                android:id="@+id/rename_device_btn"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:src="@mipmap/ic_edit_black_24dp"
-                android:backgroundTint="#f9f9f9"/>
-        </LinearLayout>
-
 
     </LinearLayout>
 
