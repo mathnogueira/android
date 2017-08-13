@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import pink.dcc.ufla.br.wiplayer.models.Group;
-import pink.dcc.ufla.br.wiplayer.models.Song;
 
 public class GroupService extends BaseService {
 
