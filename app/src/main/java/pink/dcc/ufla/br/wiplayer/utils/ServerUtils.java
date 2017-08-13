@@ -7,12 +7,12 @@ import java.net.URISyntaxException;
 
 public class ServerUtils {
 
-    public static Socket openServerSocket() {
-        try {
-            Socket socket = IO.socket("http://localhost/");
-            socket.connect();
+    public static Socket socket;
 
-            return socket;
+    public ServerUtils() {
+        try {
+            Socket socket = IO.socket("http://192.168.0.104:3500");
+            this.socket = socket;
         } catch (URISyntaxException e) {
             e.printStackTrace();
             throw new RuntimeException(e.getMessage());

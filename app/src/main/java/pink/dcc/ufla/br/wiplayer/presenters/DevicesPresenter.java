@@ -8,6 +8,8 @@ import pink.dcc.ufla.br.wiplayer.services.DeviceService;
 
 public class DevicesPresenter {
 
+
+
     private List<Device> devices;
     private DeviceService service;
 

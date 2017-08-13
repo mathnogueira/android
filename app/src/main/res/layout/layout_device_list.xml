@@ -11,21 +11,42 @@
         android:paddingStart="10dp"
         android:paddingEnd="10dp"
         android:gravity="center|start"
-        android:orientation="vertical">
+        android:orientation="horizontal">
 
-        <TextView
-            android:id="@+id/device_name"
-            android:layout_width="match_parent"
-            android:layout_height="30dp"
-            android:gravity="center|start"
-            android:textSize="20sp" />
+        <LinearLayout
+            android:layout_width="310dp"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/device_group_name"
-            android:layout_width="match_parent"
-            android:layout_height="20dp"
-            android:gravity="center|start"
-            android:text="@string/not_assigned_to_a_group" />
+            <TextView
+                android:id="@+id/device_name"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:gravity="center|start"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/device_group_name"
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
+                android:gravity="center|start"
+                android:text="@string/not_assigned_to_a_group" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="60dp"
+            android:layout_height="match_parent"
+            android:gravity="center|end">
+
+            <ImageButton
+                android:id="@+id/rename_device_btn"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@mipmap/ic_edit_black_24dp"
+                android:backgroundTint="#f9f9f9"/>
+        </LinearLayout>
+
 
     </LinearLayout>
 

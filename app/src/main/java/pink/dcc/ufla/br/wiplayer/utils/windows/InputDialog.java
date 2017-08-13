@@ -6,7 +6,6 @@ import android.app.Dialog;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 
@@ -17,18 +16,18 @@ public class InputDialog {
 
 
     private final String title;
-    private final Activity activity;
+    private final Context context;
     private OnPositionAnswerListener listener;
 
-    public InputDialog(String title, Activity activity) {
+    public InputDialog(String title, Context context) {
         this.title = title;
-        this.activity = activity;
+        this.context = context;
     }
 
-    public InputDialog(int titleResourceId, Activity activity) {
-        String title = activity.getString(titleResourceId);
+    public InputDialog(int titleResourceId, Context context) {
+        String title = context.getString(titleResourceId);
         this.title = title;
-        this.activity = activity;
+        this.context = context;
     }
 
     public InputDialog setPositiveAnswerListener(OnPositionAnswerListener listener) {
@@ -37,7 +36,7 @@ public class InputDialog {
     }
 
     public AlertDialog build() {
-        AlertDialog.Builder builder = new AlertDialog.Builder(activity);
+        AlertDialog.Builder builder = new AlertDialog.Builder(context);
         builder.setView(buildView())
                 .setTitle(title)
                 .setPositiveButton(R.string.label_ok, (dialog, which) -> {
@@ -55,14 +54,14 @@ public class InputDialog {
     }
 
     private View buildView() {
-        LayoutInflater layoutInflater = activity.getLayoutInflater();
+        LayoutInflater layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View view = layoutInflater.inflate(R.layout.dialog_input, null);
 
         EditText editText = (EditText) view.findViewById(R.id.dialog_input_text);
         editText.postDelayed(() -> {
             editText.setFocusableInTouchMode(true);
             editText.requestFocus();
-            ((InputMethodManager) activity.getSystemService(Context.INPUT_METHOD_SERVICE)).showSoftInput(editText, 0);
+            ((InputMethodManager) context.getSystemService(Context.INPUT_METHOD_SERVICE)).showSoftInput(editText, 0);
         }, 250);
 
         return view;

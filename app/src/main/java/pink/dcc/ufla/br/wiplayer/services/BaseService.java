@@ -9,6 +9,10 @@ public abstract class BaseService {
     protected Socket socket;
 
     public BaseService() {
-        socket = ServerUtils.openServerSocket();
+        ServerUtils server = new ServerUtils();
+        this.socket = server.socket;
+        this.socket.connect();
     }
+
+
 }

@@ -23,14 +23,10 @@ public class GroupService extends BaseService {
         fakeGroups = new ArrayList<>();
 
         Group group = new Group("Rock");
-        Group group2 = new Group("Metal");
-        Group group3 = new Group("Folk");
         Group group4 = new Group("Sertanejo");
         Group group5 = new Group("Funk");
 
         fakeGroups.add(group);
-        fakeGroups.add(group2);
-        fakeGroups.add(group3);
         fakeGroups.add(group4);
         fakeGroups.add(group5);
     }

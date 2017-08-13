@@ -49,7 +49,7 @@ public class SongAdapter extends BaseAdapter {
         View row = inflater.inflate(R.layout.layout_song_playing_list, viewGroup, false);
         TextView songNameContainer = (TextView) row.findViewById(R.id.song_name);
         TextView artistNameContainer = (TextView) row.findViewById(R.id.artist_name);
-        songNameContainer.setText(song.getName());
+        songNameContainer.setText(song.getTitle());
         artistNameContainer.setText(song.getAuthor());
 
         return row;
@@ -61,7 +61,7 @@ public class SongAdapter extends BaseAdapter {
         TextView artistNameContainer = (TextView) row.findViewById(R.id.artist_name);
         TextView songDurationContainer = (TextView) row.findViewById(R.id.song_duration);
 
-        songNameContainer.setText(song.getName());
+        songNameContainer.setText(song.getTitle());
         artistNameContainer.setText(song.getAuthor());
         songDurationContainer.setText(TimeUtils.formatTime(song.getDuration()));
 

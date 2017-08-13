@@ -40,6 +40,7 @@ public class DevicesFragment extends BaseFragment {
 
         startupFragment();
 
+
         return view;
     }
 

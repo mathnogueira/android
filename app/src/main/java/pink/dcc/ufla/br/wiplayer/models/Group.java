@@ -37,6 +37,7 @@ public class Group implements Serializable {
 
     public void setCurrentPlayingSong(Song currentPlayingSong) {
         this.currentPlayingSong = currentPlayingSong;
+
     }
 
     @Override

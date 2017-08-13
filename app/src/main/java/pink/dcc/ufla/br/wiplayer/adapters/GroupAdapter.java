@@ -10,7 +10,6 @@ import android.widget.TextView;
 import java.util.List;
 
 import pink.dcc.ufla.br.wiplayer.R;
-import pink.dcc.ufla.br.wiplayer.models.Device;
 import pink.dcc.ufla.br.wiplayer.models.Group;
 import pink.dcc.ufla.br.wiplayer.models.Song;
 
@@ -52,7 +51,7 @@ public class GroupAdapter extends BaseAdapter {
         Song currentSong = group.getCurrentPlayingSong();
         groupNameTextView.setText(group.getName());
         if (currentSong != null) {
-            currentSongTextView.setText(String.format("Playing %s by %s", currentSong.getName(), currentSong.getAuthor()));
+            currentSongTextView.setText(String.format("Playing %s by %s", currentSong.getTitle(), currentSong.getAuthor()));
         }
         numberDevicesTextView.setText(String.format("%d devices", group.getDevices().size()));
 

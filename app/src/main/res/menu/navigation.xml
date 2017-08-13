@@ -4,22 +4,22 @@
     <item
         android:id="@+id/navigation_groups"
         android:icon="@mipmap/ic_speaker_group_black_24dp"
-        android:title="@string/title_groups" />
+        android:name="@string/name_groups" />
 
     <!--<item-->
         <!--android:id="@+id/navigation_home"-->
         <!--android:icon="@drawable/ic_home_black_24dp"-->
-        <!--android:title="@string/title_home" />-->
+        <!--android:name="@string/title_home" />-->
 
     <item
         android:id="@+id/navigation_music"
         android:icon="@mipmap/ic_audiotrack_black_36dp"
-        android:title="@string/title_songs" />
+        android:name="@string/name_songs" />
 
     <item
         android:id="@+id/navigation_devices"
         android:icon="@mipmap/ic_phone_android_black_24dp"
-        android:title="@string/title_devices" />
+        android:name="@string/name_devices" />
 
 
 </menu>

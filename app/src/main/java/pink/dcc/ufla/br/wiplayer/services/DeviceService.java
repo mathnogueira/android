@@ -18,12 +18,19 @@ public class DeviceService extends BaseService {
 
     private DeviceService() {
         devices = new ArrayList<>();
-        devices.add(new Device("Sony Bravia 72\""));
+        /*devices.add(new Device("Sony Bravia 72\""));
         devices.add(new Device("Nexus 5"));
         devices.add(new Device("Moto G4"));
         devices.add(new Device("Autofalante JBL"));
-        devices.add(new Device("Moto Z"));
+        devices.add(new Device("Moto Z"));*/
+
     }
+
+
+    public void addDevice(String id) {
+        devices.add(new Device(id,id));
+    }
+
 
     public static DeviceService getInstance() {
         if (instance == null) {
