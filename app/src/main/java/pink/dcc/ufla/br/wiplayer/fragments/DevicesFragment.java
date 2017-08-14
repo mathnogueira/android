@@ -2,10 +2,15 @@ package pink.dcc.ufla.br.wiplayer.fragments;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
+
+import com.google.gson.Gson;
+
+import org.json.JSONObject;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -19,6 +24,8 @@ import pink.dcc.ufla.br.wiplayer.dialogs.OptionsDialog;
 import pink.dcc.ufla.br.wiplayer.models.Device;
 import pink.dcc.ufla.br.wiplayer.presenters.DevicesPresenter;
 import pink.dcc.ufla.br.wiplayer.dialogs.ListDialog;
+import pink.dcc.ufla.br.wiplayer.services.DeviceService;
+import pink.dcc.ufla.br.wiplayer.utils.ServerUtils;
 
 public class DevicesFragment extends BaseFragment {
 
@@ -74,6 +81,8 @@ public class DevicesFragment extends BaseFragment {
         });
 
         dialog.build().show();
+
+
         return true;
     }
 
@@ -82,7 +91,12 @@ public class DevicesFragment extends BaseFragment {
                 .setPositiveAnswerListener(device::setName)
                 .setDefaultValue(device.getName());
 
+
+
         dialog.build().show();
+
+
+
     }
 
 

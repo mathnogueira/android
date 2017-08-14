@@ -18,6 +18,7 @@ import pink.dcc.ufla.br.wiplayer.models.Group;
 import pink.dcc.ufla.br.wiplayer.models.Song;
 import pink.dcc.ufla.br.wiplayer.presenters.GroupsPresenter;
 import pink.dcc.ufla.br.wiplayer.dialogs.InputDialog;
+import pink.dcc.ufla.br.wiplayer.utils.ServerUtils;
 
 public class GroupsFragment extends BaseFragment {
 
@@ -77,4 +78,19 @@ public class GroupsFragment extends BaseFragment {
                 });
     }
 
+
+    @OnClick(R.id.volume_down)
+    public void volumeDown() {
+        ServerUtils.socket.emit("volumeDown");
+    }
+
+    @OnClick(R.id.volume_mute)
+    public void volumeMute() {
+        ServerUtils.socket.emit("mute");
+    }
+
+    @OnClick(R.id.volume_up)
+    public void volumeUp() {
+        ServerUtils.socket.emit("volumeUp");
+    }
 }

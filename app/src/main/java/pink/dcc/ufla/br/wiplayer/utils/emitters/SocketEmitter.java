@@ -12,17 +12,21 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
+import butterknife.BindView;
+import pink.dcc.ufla.br.wiplayer.R;
+import pink.dcc.ufla.br.wiplayer.models.Device;
 import pink.dcc.ufla.br.wiplayer.models.Song;
+import pink.dcc.ufla.br.wiplayer.services.BaseService;
 import pink.dcc.ufla.br.wiplayer.services.DeviceService;
 import pink.dcc.ufla.br.wiplayer.services.SongService;
 
-/**
- * Created by rafael on 13/08/17.
- */
 
 
 
-public class SocketEmitter {
+
+
+
+public class SocketEmitter extends BaseService{
 
 
 
@@ -43,23 +47,21 @@ public class SocketEmitter {
             Log.e("err", args[0].toString());
             Gson gson = new Gson();
             Song songs[] = gson.fromJson(jsonStr, Song[].class);
-            List<Song> songsList = new ArrayList<>();
-            /*for (int i = 0 ; i < songs.length; i++) {
-                Log.e("err", songs[i].getAuthor());
-                songsList.add(songs[i]);
-                songsList.get(i).getTitle();
-            }*/
-
             SongService songService = SongService.getInstance();
             songService.setSongs(songs);
         }
     };
 
 
-    public static Emitter.Listener playSong = new Emitter.Listener() {
+    public static Emitter.Listener devices = new Emitter.Listener() {
         @Override
         public void call(Object... args) {
-
+            String jsonStr = args[0].toString();
+            Log.e("Lista devices", args[0].toString());
+            Gson gson = new Gson();
+            Device devices[] = gson.fromJson(jsonStr, Device[].class);
+            DeviceService deviceService = DeviceService.getInstance();
+            deviceService.setDevices(devices);
         }
     };
 }

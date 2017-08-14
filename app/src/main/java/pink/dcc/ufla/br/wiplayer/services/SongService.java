@@ -29,7 +29,6 @@ public class SongService extends BaseService {
         this.songs = new ArrayList<>();
         for (int i = 0; i < songs.length; i++) {
             this.songs.add(songs[i]);
-            this.songs.get(i).getAuthor();
         }
     }
 

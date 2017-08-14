@@ -36,7 +36,9 @@ public class MainActivity extends RouteManagedActivity {
         Socket socket = server.socket;
         socket.on("newReceptor" , SocketEmitter.newReceptor);
         socket.emit("getAllSongs");
+        socket.emit("getAllReceptors");
         socket.on("allSongs", SocketEmitter.allSongs);
+        socket.on("receptors", SocketEmitter.devices);
         initializeRouter();
         configureReplacer();
     }

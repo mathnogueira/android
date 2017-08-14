@@ -1,6 +1,10 @@
 package pink.dcc.ufla.br.wiplayer.models;
 
+import android.util.Log;
+
 import java.io.Serializable;
+
+import pink.dcc.ufla.br.wiplayer.services.DeviceService;
 
 public class Device implements Serializable {
 
@@ -26,6 +30,10 @@ public class Device implements Serializable {
     }
 
     public void setName(String name) {
+        Log.e("erro", this.name + name);
+
+        DeviceService deviceService = DeviceService.getInstance();
+        deviceService.renameDevice(this.id, name);
         this.name = name;
     }
 
