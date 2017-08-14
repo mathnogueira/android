@@ -1,28 +1,24 @@
 package pink.dcc.ufla.br.wiplayer.fragments;
 
+import android.content.Context;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.TextView;
-
-import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnItemClick;
+import butterknife.OnItemLongClick;
 import pink.dcc.ufla.br.wiplayer.R;
 import pink.dcc.ufla.br.wiplayer.adapters.DeviceAdapter;
 import pink.dcc.ufla.br.wiplayer.dialogs.GroupSelectionDialog;
+import pink.dcc.ufla.br.wiplayer.dialogs.InputDialog;
+import pink.dcc.ufla.br.wiplayer.dialogs.OptionsDialog;
 import pink.dcc.ufla.br.wiplayer.models.Device;
-import pink.dcc.ufla.br.wiplayer.models.Group;
 import pink.dcc.ufla.br.wiplayer.presenters.DevicesPresenter;
-import pink.dcc.ufla.br.wiplayer.utils.windows.InputDialog;
+import pink.dcc.ufla.br.wiplayer.dialogs.ListDialog;
 
 public class DevicesFragment extends BaseFragment {
 
@@ -63,6 +59,30 @@ public class DevicesFragment extends BaseFragment {
         });
 
         dialog.show();
+    }
+
+    @OnItemLongClick(R.id.device_list)
+    public boolean onDeviceLongPress(int position) {
+        final Device selectedDevice = presenter.getDevices().get(position);
+        OptionsDialog dialog = new OptionsDialog("Device", getContext());
+        dialog.setOptions(new String[] {"Rename device", "Set group"});
+        dialog.setOnItemSelectedListener(selectedOptionPosition -> {
+            switch (selectedOptionPosition) {
+                case 0: renameDevice(selectedDevice); break;
+                case 1: onDeviceSelected(position); break;
+            }
+        });
+
+        dialog.build().show();
+        return true;
+    }
+
+    private void renameDevice(Device device) {
+        InputDialog dialog = new InputDialog("Rename the device", getContext())
+                .setPositiveAnswerListener(device::setName)
+                .setDefaultValue(device.getName());
+
+        dialog.build().show();
     }
 
 
